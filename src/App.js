@@ -88,7 +88,7 @@ function App(props) {
   return (
     <div className="pusho">
       <header className="pusho-header">
-        App: Pusho
+        Pusho
       </header>
 
       <Form subject = {subject}
@@ -110,6 +110,10 @@ function App(props) {
             <li>{headingText2}</li>
           </ol>
           <p>machen!</p>
+        </div>
+
+        <div>
+          Das ist ein Github-Test!
         </div>
 
         <div className="pusho-end-button">
