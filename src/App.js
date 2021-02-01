@@ -88,7 +88,7 @@ function App(props) {
   return (
     <div className="pusho">
       <header className="pusho-header">
-        Pusho
+        App: Pusho
       </header>
 
       <Form subject = {subject}
