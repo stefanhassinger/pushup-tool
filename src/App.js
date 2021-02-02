@@ -113,7 +113,7 @@ function App(props) {
         </div>
 
         <div>
-          Das ist ein Github-Test!
+          Das ist ein Github-Test! Test
         </div>
 
         <div className="pusho-end-button">
