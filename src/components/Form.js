@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Typography from '@material-ui/core/Typography';
 
 
 export default function Form(props) {
@@ -20,9 +21,12 @@ export default function Form(props) {
     return (
   
     <div className="pusho-introduction">
-        <h1>Hallo {subject}</h1>
-        <p>Kein Bock mehr auf Trainingspläne! Mehr Lust auf Nervenkitzel und Spaß bei deinem Training? Kein Problem! Lass doch einfach dein Glück des Zufalls entscheiden! Jetzt pusho ausprobieren!
-        </p>
+        <Typography variant="h3" gutterBottom>
+            Hallo {subject}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+            Kein Bock mehr auf Trainingspläne! Mehr Lust auf Nervenkitzel und Spaß bei deinem Training? Kein Problem! Lass doch einfach dein Glück des Zufalls entscheiden! Jetzt pusho ausprobieren!
+        </Typography>
         <form onSubmit={handleSubmit}>
             <label>Welche Übung willst du heute ausführen?</label>
             <br></br>

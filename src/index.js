@@ -11,6 +11,6 @@ const DATA = [
 
 ReactDOM.render(
     <App 
-    subject = "Stefan Sebastian"
+    subject = "Stefan"
     workouts = {DATA} />, document.getElementById('root')
 );

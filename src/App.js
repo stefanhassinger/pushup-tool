@@ -3,11 +3,14 @@
 //3. Styling
 //4. Pop-Up-Menü zum eintragen: Name, Höchstanzahl der Übungen, Auswahl der Übungen,
 
+import 'fontsource-roboto';
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Workout from "./components/Workout";
 import Shufflebutton from "./components/Shufflebutton";
 import Form from "./components/Form";
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 function App(props) {
   const [workouts, setWorkouts] = useState(props.workouts);
@@ -88,7 +91,7 @@ function App(props) {
   return (
     <div className="pusho">
       <header className="pusho-header">
-        Pusho
+        Pusho      
       </header>
 
       <Form subject = {subject}
@@ -97,27 +100,26 @@ function App(props) {
       
       <div className="pusho-app">       
         <div className="pusho-list">
-          <h2>Dein Workout:</h2>
+          <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
           {workoutList}
         </div>
 
         <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
 
         <div className="pusho-result">
-          <p>Um dein Workout beenden zu können, musst du nur noch...</p>
+          <Typography variant="body1" gutterBottom>
+            Um dein Workout zu beenden, muss du noch folgende Übungen ausführen:
+          </Typography>
           <ol>
             <li>{headingText1}</li>
             <li>{headingText2}</li>
           </ol>
-          <p>machen!</p>
-        </div>
-
-        <div>
-          Das ist ein Github-Test! Test
         </div>
 
         <div className="pusho-end-button">
-          <button onClick={workoutBeenden} type="submit" className="btn btn-end">Workout beenden</button>
+          <Button variant="contained" color="primary" onClick={workoutBeenden} type="submit" className="btn btn-end">
+            Workout beenden
+          </Button>
         </div>
       </div>
     </div>
