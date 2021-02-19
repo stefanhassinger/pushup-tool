@@ -1,5 +1,4 @@
 //Things to do: 
-//2. Github nutzen
 //3. Styling
 //4. Pop-Up-Menü zum eintragen: Name, Höchstanzahl der Übungen, Auswahl der Übungen,
 
@@ -9,11 +8,26 @@ import { nanoid } from "nanoid";
 import Workout from "./components/Workout";
 import Shufflebutton from "./components/Shufflebutton";
 import Form from "./components/Form";
+import Appbar from './components/Appbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  typography: {
+      padding: theme.spacing(1),
+  }
+}));
+
 
 function App(props) {
   const [workouts, setWorkouts] = useState(props.workouts);
+  const classes = useStyles();
   
   const subject = props.subject;
 
@@ -87,41 +101,42 @@ function App(props) {
   }
 
   
-
   return (
     <div className="pusho">
-      <header className="pusho-header">
-        Pusho      
-      </header>
 
-      <Form subject = {subject}
-            addWorkout = {addWorkout}/>
+      <Appbar />
 
-      
-      <div className="pusho-app">       
-        <div className="pusho-list">
-          <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
-          {workoutList}
-        </div>
+      <Container maxWidth="sm">
+        <Form subject = {subject}
+              addWorkout = {addWorkout}/>
+              <Grid className={classes.typography} item xs={12} spacing={1}>
+                <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
+              </Grid>
+                 
+            {workoutList}
+          <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
 
-        <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
-
-        <div className="pusho-result">
-          <Typography variant="body1" gutterBottom>
-            Um dein Workout zu beenden, muss du noch folgende Übungen ausführen:
-          </Typography>
-          <ol>
-            <li>{headingText1}</li>
-            <li>{headingText2}</li>
-          </ol>
-        </div>
-
-        <div className="pusho-end-button">
-          <Button variant="contained" color="primary" onClick={workoutBeenden} type="submit" className="btn btn-end">
-            Workout beenden
-          </Button>
-        </div>
-      </div>
+          <div className="pusho-result">
+            <Grid className={classes.typography} item xs={12} spacing={1}>
+              <Typography variant="h6" gutterBottom>
+                Deine Statistiken:
+              </Typography>
+            </Grid>
+            <Grid container spacing={1}>
+              <Grid item xs={6} container justify="space-around" alignItems="center">
+                <ol>
+                  <li>{headingText1}</li>
+                  <li>{headingText2}</li>
+                </ol>
+              </Grid>
+              <Grid item xs={6} container justify="space-around" alignItems="center">
+                  <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
+                    Ende
+                  </Button>
+              </Grid>
+            </Grid>
+          </div>
+      </Container>
     </div>
   );
 }
