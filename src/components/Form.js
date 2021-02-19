@@ -128,7 +128,7 @@ export default function Form(props) {
                     </Select>
                 </Grid>
                 <Grid item xs={6} container justify="space-around" alignItems="center">
-                    <Button size="medium" onClick={handleSubmit} type="submit" variant="contained" color="primary">Add</Button>
+                    <Button size="medium" onClick={handleSubmit} type="submit" variant="contained" color="primary">Hinzufügen</Button>
                 </Grid> 
             </Grid>
         </Paper>

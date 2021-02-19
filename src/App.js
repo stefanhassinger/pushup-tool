@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Workout from "./components/Workout";
 import Shufflebutton from "./components/Shufflebutton";
+import Impressum from "./components/Impressum";
 import Form from "./components/Form";
 import Appbar from './components/Appbar';
 import Button from '@material-ui/core/Button';
@@ -14,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -131,11 +133,13 @@ function App(props) {
               </Grid>
               <Grid item xs={6} container justify="space-around" alignItems="center">
                   <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
-                    Ende
+                    Workout beenden
                   </Button>
               </Grid>
             </Grid>
-          </div>
+            <Divider variant="middle" />
+          </div> 
+          <Impressum />
       </Container>
     </div>
   );
