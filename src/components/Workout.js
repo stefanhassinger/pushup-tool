@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -80,14 +80,14 @@ export default function Workout(props) {
                 >
                   fertig!
               </CheckCircleIcon>
-              <EditIcon
+              {/* <EditIcon
                   color="primary"
                   type="button"
                   className="btn btn_delete"
                   onClick={() => setEditing(true)}
                 >
                   Edit!
-              </EditIcon>
+              </EditIcon> */}
             </Grid>          
           </Grid>
         </Paper>

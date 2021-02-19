@@ -27,15 +27,10 @@ export default function ShuffleButton(props) {
     <div>
         <Grid container className={classes.typography}>
             <Typography variant="h6">
-                Unzufrieden?
+                Unzufrieden? Jetzt dein Workout shufflen!
             </Typography>
             <Grid container>
-                <Grid item container xs={6} alignItems="center" justify="space-around">
-                    <Typography variant="subtitle1" gutterBottom>
-                            Jetzt dein Workout shufflen!
-                    </Typography>
-                </Grid>
-                <Grid item container xs={6} alignItems="center" justify="space-around">    
+                <Grid item container xs={12} alignItems="center" justify="space-around">    
                     <AddCircleIcon fontSize="large"
                         onClick={handleSubmit} variant="contained" color="primary" type="submit" className="btn btn-shuffle">
                             Workout shufflen

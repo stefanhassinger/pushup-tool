@@ -5,8 +5,7 @@ import App from './App';
 
 const DATA = [
   { id: "todo-0", name: "Push-Ups", anzahl: 200,},
-  { id: "todo-1", name: "Sit-Ups", anzahl: 50},
-  { id: "todo-2", name: "Planks", anzahl: 50}
+  { id: "todo-1", name: "Crunches", anzahl: 50},
 ];
 
 ReactDOM.render(

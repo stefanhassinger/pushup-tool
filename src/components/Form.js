@@ -120,9 +120,11 @@ export default function Form(props) {
                         value={name}
                         onChange={handleChange}
                     >
-                        <MenuItem value="Test1">Test1</MenuItem>
-                        <MenuItem value="Test2">Test2</MenuItem>
-                        <MenuItem value="Test3">Test3</MenuItem>
+                        <MenuItem value="Push-Ups">Push-Ups</MenuItem>
+                        <MenuItem value="Burpees">Burpees</MenuItem>
+                        <MenuItem value="Squats">Squats</MenuItem>
+                        <MenuItem value="Crunches">Crunches</MenuItem>
+                        <MenuItem value="Mountain Climbers">Mountain Climbers</MenuItem>
                     </Select>
                 </Grid>
                 <Grid item xs={6} container justify="space-around" alignItems="center">
