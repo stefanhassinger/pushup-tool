@@ -65,13 +65,13 @@ export default function Workout(props) {
       <Box mb={1}>
         <Paper variant="outlined" className={classes.paper}>
           <Grid container>
-              <Grid container item xs={4} alignItems="center">
+              <Grid container item xs={8} alignItems="center">
                 {props.name}
               </Grid>
-              <Grid container item xs={4} alignItems="center">
+              <Grid container item xs={2} alignItems="center">
                 {props.anzahl}
               </Grid>
-              <Grid container item xs={4} alignItems="center">
+              <Grid container item xs={2} alignItems="center">
               <CheckCircleIcon 
                   color="primary"
                   type="button"

@@ -16,7 +16,7 @@ export default function Impressum() {
     return (
         <div className={classes.root}>
             <Grid container xs={12} alignItems="center" justify="space-around">
-                <a href="https://github.com/stefanhassinger/pushup-tool/">   
+                <a href="https://github.com/stefanhassinger/pushup-tool/" target="_blank" rel="noreferrer">   
                     <GitHubIcon fontSize="large" color="disabled"/>
                 </a>
             </Grid>    

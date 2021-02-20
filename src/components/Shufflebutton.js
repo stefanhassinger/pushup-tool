@@ -27,7 +27,7 @@ export default function ShuffleButton(props) {
     <div>
         <Grid container className={classes.typography}>
             <Typography variant="h6">
-                Unzufrieden? Jetzt dein Workout shufflen!
+                Unzufrieden? Workout shufflen!
             </Typography>
             <Grid container>
                 <Grid item container xs={12} alignItems="center" justify="space-around">    

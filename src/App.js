@@ -4,6 +4,7 @@
 
 import 'fontsource-roboto';
 import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { nanoid } from "nanoid";
 import Workout from "./components/Workout";
 import Shufflebutton from "./components/Shufflebutton";
@@ -16,6 +17,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import WorkoutAbgeschlossen from './WorkoutAbgeschlossen';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,56 +95,69 @@ function App(props) {
     setWorkouts([...workouts]);
   }
 
+  
+
   function workoutBeenden() {
+    
     console.log({anzahlWorkouts});
     if (anzahlWorkouts === 0) {
       alert("Das Workout ist beendet! Gut gemacht");
+      window.location.href = "/workout-abgeschlossen"
     } else {
       alert("Das Workout ist nicht beendet!");
     }
   }
 
+  const Home = () => (
+    <div>
+    <Form subject = {subject}
+          addWorkout = {addWorkout}/>
+          <Grid className={classes.typography} item xs={12} spacing={1}>
+            <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
+          </Grid>
+             
+        {workoutList}
+      <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
+
+      <div className="pusho-result">
+        <Grid className={classes.typography} item xs={12} spacing={1}>
+          <Typography variant="h6" gutterBottom>
+            Deine Statistiken:
+          </Typography>
+        </Grid>
+        <Grid container spacing={1}>
+          <Grid item xs={6} container justify="space-around" alignItems="center">
+            <ol>
+              <li>{headingText1}</li>
+              <li>{headingText2}</li>
+            </ol>
+          </Grid>
+          <Grid item xs={6} container justify="space-around" alignItems="center">
+              <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
+                Workout beenden
+              </Button>
+          </Grid>
+        </Grid>
+        <Divider variant="middle" />
+      </div>
+  </div>
+);
+
   
   return (
-    <div className="pusho">
-
-      <Appbar />
-
-      <Container maxWidth="sm">
-        <Form subject = {subject}
-              addWorkout = {addWorkout}/>
-              <Grid className={classes.typography} item xs={12} spacing={1}>
-                <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
-              </Grid>
-                 
-            {workoutList}
-          <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
-
-          <div className="pusho-result">
-            <Grid className={classes.typography} item xs={12} spacing={1}>
-              <Typography variant="h6" gutterBottom>
-                Deine Statistiken:
-              </Typography>
-            </Grid>
-            <Grid container spacing={1}>
-              <Grid item xs={6} container justify="space-around" alignItems="center">
-                <ol>
-                  <li>{headingText1}</li>
-                  <li>{headingText2}</li>
-                </ol>
-              </Grid>
-              <Grid item xs={6} container justify="space-around" alignItems="center">
-                  <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
-                    Workout beenden
-                  </Button>
-              </Grid>
-            </Grid>
-            <Divider variant="middle" />
-          </div> 
-          <Impressum />
-      </Container>
-    </div>
-  );
+    <Router>
+      <div className="pusho">       
+          <Appbar />
+          <Container maxWidth="sm">
+            <Switch>
+                <Route path="/" exact component={Home}/>
+                <Route path="/workout-abgeschlossen" component={WorkoutAbgeschlossen} />
+            </Switch>
+            <Impressum />
+          </Container>
+      </div>
+    </Router>
+    );
 }
 
 export default App;

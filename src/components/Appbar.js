@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    color: "white",
+    textDecoration: "none",
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -20,9 +25,11 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title} align="center">
-            Pusho
-          </Typography>
+            <Typography variant="h6" className={classes.title} align="center">
+              <Link className={classes.link} to="/">
+                Pusho
+              </Link>
+            </Typography>
         </Toolbar>
       </AppBar>
     </div>
