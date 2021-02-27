@@ -1,7 +1,3 @@
-//Things to do: 
-//3. Styling
-//4. Pop-Up-Menü zum eintragen: Name, Höchstanzahl der Übungen, Auswahl der Übungen,
-
 import 'fontsource-roboto';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
@@ -18,14 +14,29 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import WorkoutAbgeschlossen from './WorkoutAbgeschlossen';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   typography: {
-      padding: theme.spacing(1),
-  }
+      padding: theme.spacing(2),
+  },
+
+  paper: {
+    justifyContent: "center",
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(12),
+      height: theme.spacing(12),
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",  
+    },
+  },
 }));
 
 
@@ -51,11 +62,11 @@ function App(props) {
     const anzahlWorkouts = workouts.reduce(function(prev, cur) {
       return prev + cur.anzahl;
     }, 0);
-    const headingText1 = `${anzahlWorkouts} Aktionen`
+    const headingText1 = `Anzahl an Aktionen: ${anzahlWorkouts}`
     console.log("Anzahl der Aktionen: ", anzahlWorkouts);
 
-    const workoutNoun = workoutList.length !== 1 ? "Übungen" : "Übung";
-    const headingText2 = `${workoutList.length} ${workoutNoun}`;
+    // const workoutNoun = workoutList.length !== 1 ? "Übungen" : "Übung";
+    const headingText2 = `Anzahl an Übungen: ${workoutList.length}`;
     console.log("Anzahl der Übungen: ", workoutList.length);
 
   function getNumberOfWorkouts(min, max) {
@@ -90,12 +101,21 @@ function App(props) {
     setWorkouts(editedWorkoutList);
   }
 
+  const [count, setCount] = useState(3);
+
+    // const decrementCount = () => {
+    //     setCount(count - 1);
+    //     // if (count <= 0) return alert("Geht nicht mehr");
+    //     console.log(setCount);
+    // }
+
+
   function shuffleWorkouts() {
+    if (count <= 0) return alert("Geht nicht mehr! Du hast dein Glück durchgespielt!");
+    setCount(count - 1);
     workouts.forEach(workout => (workout.anzahl = getNumberOfWorkouts(1, 6)));
     setWorkouts([...workouts]);
   }
-
-  
 
   function workoutBeenden() {
     
@@ -109,44 +129,62 @@ function App(props) {
   }
 
   const Home = () => (
-    <div>
-    <Form subject = {subject}
-          addWorkout = {addWorkout}/>
-          <Grid className={classes.typography} item xs={12} spacing={1}>
-            <Typography variant="h6" gutterBottom>Dein Workout:</Typography>
-          </Grid>
-             
-        {workoutList}
-      <Shufflebutton shuffleWorkouts={shuffleWorkouts}/>
+    <div className={classes.root}>
+      <Form subject = {subject}
+            addWorkout = {addWorkout}/>
 
-      <div className="pusho-result">
-        <Grid className={classes.typography} item xs={12} spacing={1}>
+      <Grid container spacing={1} className={classes.typography}>
+        <Grid item xs={12}>
           <Typography variant="h6" gutterBottom>
-            Deine Statistiken:
+            <strong>Dein Workout:</strong>
           </Typography>
         </Grid>
-        <Grid container spacing={1}>
-          <Grid item xs={6} container justify="space-around" alignItems="center">
-            <ol>
-              <li>{headingText1}</li>
-              <li>{headingText2}</li>
-            </ol>
-          </Grid>
-          <Grid item xs={6} container justify="space-around" alignItems="center">
-              <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
-                Workout beenden
-              </Button>
-          </Grid>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1">
+            Hier siehst du dein Workout, welches du ausführen musst.
+          </Typography>
         </Grid>
+      </Grid>    
+        {workoutList}
+      <Shufflebutton  shuffleWorkouts={shuffleWorkouts}
+                      count = {count}
+      
+      />
+
+      <Grid container spacing={1} justify="space-around" alignItems="center" className={classes.typography}>
+        <Grid xs={12} spacing={1}>
+          <Typography variant="h6" gutterBottom>
+            <strong>Deine Statistiken:</strong>
+          </Typography>
+        </Grid>
+        <Grid xs={12} spacing={1}  className={classes.paper}>    
+          <Paper variant="outlined">     
+            {headingText1}
+          </Paper>
+          <Paper variant="outlined">
+            {headingText2}
+          </Paper>
+        </Grid>
+        
+
+        <Grid item xs={12} spacing={1} container justify="space-around" alignItems="center">
+          <Button size="medium" variant="contained" color="primary" onClick={workoutBeenden} type="submit">
+            Workout beenden
+          </Button>
+        </Grid>
+      </Grid>
+        <Typography>{count}</Typography>
+
         <Divider variant="middle" />
-      </div>
-  </div>
+        
+    </div>
+  
 );
 
   
   return (
     <Router>
-      <div className="pusho">       
+      <div className={classes.pusho}>       
           <Appbar />
           <Container maxWidth="sm">
             <Switch>

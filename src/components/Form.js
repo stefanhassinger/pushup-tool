@@ -6,12 +6,6 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-// import TextField from '@material-ui/core/TextField';
-// import Dialog from '@material-ui/core/Dialog';
-// import DialogActions from '@material-ui/core/DialogActions';
-// import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-// import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,18 +26,7 @@ export default function Form(props) {
     const classes = useStyles();
     const subject = props.subject;
     const [name, setName] = useState('');
-
-    // const [open, setOpen] = React.useState(false);
-
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    //   };
     
-    //   const handleClose = () => {
-    //     setOpen(false);
-    //   };
-
- 
     
     function handleChange(e) {
         setName(e.target.value);
@@ -58,15 +41,15 @@ export default function Form(props) {
 
     return (
   
-    <div className={"classes.root"}>
+    <div className={classes.root}>
         <Grid container spacing={1} className={classes.typography}>
             <Grid item xs={12}>
-                <Typography variant="h6">
-                    Hallo {subject},
+                <Typography variant="h6" gutterBottom>
+                    <strong>Hallo {subject},</strong>
                 </Typography>
             </Grid>
             <Grid item xs={12}>
-                <Typography variant="subtitle1" gutterBottom>
+                <Typography variant="subtitle1">
                     Lust auf Bizeps? Kein Bock mehr auf Trainingspläne! Lass den Zufall über dein Workout entscheiden!
                 </Typography>
             </Grid>

@@ -49,6 +49,7 @@ function WorkoutAbgeschlossen() {
                     <br></br>
                     <Mention username="stefbretz" options={{ text: "ist der coolste!" }} />
                 </CardContent>
+                
             </Card>                
         </div>      
     )
