@@ -103,13 +103,6 @@ function App(props) {
 
   const [count, setCount] = useState(3);
 
-    // const decrementCount = () => {
-    //     setCount(count - 1);
-    //     // if (count <= 0) return alert("Geht nicht mehr");
-    //     console.log(setCount);
-    // }
-
-
   function shuffleWorkouts() {
     if (count <= 0) return alert("Geht nicht mehr! Du hast dein Glück durchgespielt!");
     setCount(count - 1);
@@ -173,8 +166,6 @@ function App(props) {
           </Button>
         </Grid>
       </Grid>
-        <Typography>{count}</Typography>
-
         <Divider variant="middle" />
         
     </div>
