@@ -32,6 +32,10 @@ export default function Form(props) {
         setName(e.target.value);
     }
 
+    function workoutAuswaehlen() {
+        alert("Dieser Button funktioniert");
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -92,6 +96,17 @@ export default function Form(props) {
             </Grid>
         </Paper> */}
 
+
+        <Paper variant="outlined" className={classes.paper}>
+            <Grid container spacing={1}>
+                <Grid item xs={12}>
+                    Welche Übungen willst du heute machen?
+                </Grid>
+                <Grid item xs={12} container justify="space-around" alignItems="center">
+                    <Button size="medium" onClick={workoutAuswaehlen} type="submit" variant="contained" color="primary">Workout auswählen</Button>
+                </Grid>
+            </Grid>
+        </Paper>
 
         <Paper variant="outlined" className={classes.paper}>
             <Grid container spacing={1}>
